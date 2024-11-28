@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
-import {routes} from "@/data/global";
+import { routes } from "@/data/global";
 import useDelayedRender from "use-delayed-render";
 
 export default function MobileNavbar() {
@@ -33,16 +33,20 @@ export default function MobileNavbar() {
   return (
     <nav>
       <div
-        className={`w-full justify-between flex items-center ${isMenuRendered && 'bg-bg'} p-5`}
+        className={`w-full justify-between flex items-center ${
+          isMenuRendered && "bg-bg"
+        } p-5`}
         style={{ zIndex: 101 }}
       >
         <li className="list-none font-bold text-lg">
-          <Link href="/">
-            <img
-              className="mr-3"
-              src="/static/logos/logo_full.svg"
-              width="160"
-            />
+          <Link href="/" legacyBehavior>
+            <a>
+              <img
+                className="mr-3"
+                src="/static/logos/logo_full.svg"
+                width="160"
+              />
+            </a>
           </Link>
         </li>
         <button
@@ -57,21 +61,21 @@ export default function MobileNavbar() {
       </div>
       {isMenuMounted && (
         <ul
-          className={`menu flex flex-col absolute bg-bg
-            ${isMenuRendered && "menuRendered"}`}
+          className={`menu flex flex-col absolute bg-bg ${
+            isMenuRendered && "menuRendered"
+          }`}
         >
-          {routes.map((item, index) => {
-            return (
-              <li
-                className="border-b border-gray-900 text-gray-100 text-sm font-semibold"
-                style={{ transitionDelay: `${150 + index * 25}ms` }}
-              >
-                <Link href={item.path}>
-                  <a className="flex w-auto pb-4">{item.title}</a>
-                </Link>
-              </li>
-            );
-          })}
+          {routes.map((item, index) => (
+            <li
+              className="border-b border-gray-900 text-gray-100 text-sm font-semibold"
+              style={{ transitionDelay: `${150 + index * 25}ms` }}
+              key={index}
+            >
+              <Link href={item.path} className="flex w-auto pb-4">
+                {item.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </nav>
