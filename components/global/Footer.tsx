@@ -121,17 +121,17 @@ function Footer() {
       <div className="mt-8 text-center sm:text-right sm:-mt-12">
         <a
           className="w-auto inline-flex items-center sm:w-auto font-bold flex-shrink text-xs border border-fun-pink px-4 py-2 rounded-xl text-fun-pink cursor-pointer opacity-50"
-          href="https://github.com/braydentw/braydentw.io"
+          href="https://wa.me/258833390642?text=Oi,%20gostaria%20de%20saber%20mais%20sobre%20o%20seu%20trabalho!"
           target="_blank"
-          rel="nooreferrer"
+          rel="noopener noreferrer"
         >
           <Image
-            src="/static/icons/github.svg"
+            src="/static/whatsapp.svg" // Imagem do ícone do WhatsApp
             width={16}
             height={16}
-            alt="Github Icon"
+            alt="WhatsApp Icon"
           />
-          <span className="ml-2">View Source Code</span>
+          <span className="ml-2 text-white">Enviar Mensagem no WhatsApp</span>
         </a>
       </div>
     </footer>
