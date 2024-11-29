@@ -1,66 +1,75 @@
 import React from "react";
-import Image from "next/image";
-import { kebabCase } from "@/utils/utils";
-import Link from "next/link";
+
+function TargetIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="text-blue-500"
+    >
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="12" r="6"></circle>
+      <circle cx="12" cy="12" r="2"></circle>
+    </svg>
+  );
+}
+
+function ZapIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="text-yellow-500"
+    >
+      <polygon points="13 2 3 14 12 14 11 22 21 10"></polygon>
+    </svg>
+  );
+}
 
 function ProjectCard({ project }) {
   return (
-    <div
-      className="max-w-sm mx-auto flex flex-col projects-center md:projects-start md:justify-center"
-      key={project.id}
-    >
-      <a
-        href={project.link || project.github}
-        target="_blank"
-        className={`w-full relative rounded-xl border-fun-gray border p-2 transition hover:-translate-y-2 hover:opacity-75 hover:border-fun-pink will-change-projectCard`}
-      >
+    <div className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 w-full h-72">
+      {/* Image Section */}
+      <div className="relative h-36 overflow-hidden rounded-t-xl">
         <img
-          className="w-full rounded-md"
           src={project.img}
+          alt={project.title}
+          className="w-full h-full  transition-transform duration-500 group-hover:scale-110"
         />
-      </a>
-      <div className="w-full mt-5">
-        <div className="flex projects-center justify-between">
-          <a href={project.link || project.github} target="_blank">
-            <h3 className="text-lg font-bold">{project.title}</h3>
-          </a>
-          <div className="space-x-2">
-            {project.link && (
-              <a href={project.link} target="_blank" rel="noreferrer">
-                <Image
-                  src="/static/icons/external-link.svg"
-                  width={16}
-                  height={16}
-                  alt="Link Icon"
-                />
-              </a>
-            )}
-            {project.github && (
-              <a href={project.github} target="_blank" rel="noreferrer">
-                <Image
-                  src="/static/icons/github.svg"
-                  width={16}
-                  height={16}
-                  alt="Github Icon"
-                />
-              </a>
-            )}
-          </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+
+      {/* Content Section */}
+      <div className="p-4 h-36 flex flex-col justify-between">
+        <div className="flex items-center justify-between">
+          <h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
+            {project.title}
+          </h3>
+          <TargetIcon />
         </div>
-        <p className="text-fun-gray text-left text-sm">{project.desc}</p>
-        <ul className="flex flex-wrap items-center mt-2 -ml-2 list-none">
-          {project.tags.map((tag, index) => {
-            return (
-              <li key={tag}>
-                <Link href={`/projects/tag/${kebabCase(tag)}`}>
-                  <div className="m-1 rounded-lg text-sm bg-fun-pink-dark py-1 px-2 cursor-pointer hover:opacity-75">
-                    {tag}
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <p className="text-gray-600 text-sm line-clamp-2">{project.desc}</p>
+
+        {/* Footer Section */}
+        <div className="flex items-center space-x-2">
+          <ZapIcon />
+          <span className="text-xs text-gray-500 uppercase tracking-wider">
+            Nexus
+          </span>
+        </div>
       </div>
     </div>
   );

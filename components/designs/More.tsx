@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
 
 function More() {
-    return (
-      <p className="py-20 text-sm italic text-fun-gray">
-        That's not all... I've got more on <a className="text-fun-pink underline" href="https://dribbble.com/braydentw" target="_blank">my Dribbble</a>!
-      </p>
-    );
+  return (
+    <p className="py-20 text-sm italic text-fun-gray">
+      Hey, hey, hey... I've got even more on{" "}
+      <a
+        className="text-fun-pink underline"
+        href="https://github.com/braydentw"
+        target="_blank"
+      >
+        my GitHub
+      </a>
+      !
+    </p>
+  );
 }
 
-export default More
+export default More;
